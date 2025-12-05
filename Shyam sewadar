@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyam Sewadar | खाटू श्याम भक्ति ऐप</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font (Used by Tailwind) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for a devotional look */
+        body {
+            background-color: #f7f3f0; /* Light parchment color */
+            font-family: 'Inter', sans-serif;
+        }
+        .devotional-bg {
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.04);
+        }
+        .active-tab {
+            background-color: #9333ea; /* Purple */
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .inactive-tab {
+            background-color: #efe8f8; /* Light Purple */
+            color: #4c1d95; /* Dark Purple */
+            transition: all 0.2s;
+        }
+        .inactive-tab:hover {
+            background-color: #d8b4fe;
+        }
+        /* Custom Scrollbar for Content */
+        .content-area::-webkit-scrollbar {
+            width: 6px;
+        }
+        .content-area::-webkit-scrollbar-thumb {
+            background: #a78bfa;
+            border-radius: 10px;
+        }
+        .content-area::-webkit-scrollbar-track {
+            background: #f7f3f0;
+        }
+    </style>
+</head>
+<body class="p-0 m-0">
+
+    <!-- Main Container -->
+    <div id="app" class="max-w-xl mx-auto min-h-screen devotional-bg flex flex-col">
+
+        <!-- Header -->
+        <header class="p-4 bg-yellow-600 text-white shadow-lg rounded-b-xl">
+            <h1 class="text-3xl font-extrabold text-center tracking-tight">
+                श्याम सेवक (Shyam Sewadar)
+            </h1>
+            <p class="text-sm text-center opacity-80 mt-1">
+                ।। हारे का सहारा बाबा श्याम हमारा ।।
+            </p>
+        </header>
+        
+        <!-- Developer Info -->
+        <div class="bg-gray-100 p-2 text-xs text-center text-gray-600">
+            Developer: Raj Jaiswal
+        </div>
+
+        <!-- Navigation Tabs (Mobile Optimized) -->
+        <nav id="nav-tabs" class="flex flex-wrap justify-center p-3 gap-2 bg-white shadow-md">
+            <!-- Tabs will be created here by JS for easier management -->
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="content-area" class="content-area flex-grow p-4 overflow-y-auto">
+            <!-- Dynamic content will load here -->
+            <div class="flex flex-col items-center justify-center h-full text-center p-6">
+                <svg class="w-16 h-16 text-yellow-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.764a2 2 0 01-1.789-2.894l3.5-7A2 2 0 0114 10zM20 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                <h2 class="text-xl font-semibold text-gray-700">श्याम बाबा की कृपा</h2>
+                <p class="text-gray-500 mt-2">कृपया ऊपर दिए गए विकल्पों में से कोई चुनें।</p>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const contentData = {
+            'Mantra': {
+                title: "।। श्याम मंत्र जाप ।।",
+                icon: `<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+                content: `
+                    <p class="text-lg font-bold text-center text-yellow-700 mb-4">सबसे प्रसिद्ध मूल मंत्र:</p>
+                    <div class="bg-yellow-100 p-4 rounded-xl border-l-4 border-yellow-500 mb-6 shadow-md">
+                        <p class="text-2xl text-center font-extrabold text-yellow-800">।। ॐ श्री श्याम देवाय नमः ।।</p>
+                    </div>
+
+                    <p class="text-lg font-bold text-center text-gray-700 mb-4 mt-6">संपूर्ण श्याम बीज मंत्र:</p>
+                    <div class="bg-indigo-100 p-4 rounded-xl border-l-4 border-indigo-500 shadow-md">
+                        <p class="text-xl text-center font-medium text-indigo-800 leading-relaxed">
+                            ।। ॐ श्याम देवाय बर्बरीकाय हरये परमात्मने । <br> प्रणतः क्लेशनाशाय सुह्र्दयाय नमो नमः ।।
+                        </p>
+                    </div>
+
+                    <p class="mt-6 text-gray-600 text-sm">यह मंत्र श्याम बाबा की कृपा और भक्ति में लीन होने के लिए जपा जाता है।</p>
+                `
+            },
+            'Aarti': {
+                title: "।। श्री श्याम आरती ।।",
+                icon: `<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>`,
+                content: `
+                    <h2 class="text-2xl font-bold text-center text-red-600 mb-4">ॐ जय श्री श्याम हरे</h2>
+                    <div class="text-gray-700 leading-relaxed space-y-3 p-2 bg-red-50 rounded-lg shadow-inner">
+                        <p class="text-center font-semibold text-lg">
+                            ॐ जय श्री श्याम हरे, बाबा जय श्री श्याम हरे ।<br>
+                            खाटू धाम विराजत, अनुपम रूप धरे ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                        <p>
+                            रतन जड़ित सिंहासन, सिर पर चंवर ढुरे ।<br>
+                            तन केसरिया बागो, कुण्डल श्रवण पड़े ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                        <p>
+                            गल पुष्पों की माला, सिर पर मुकुट धरे ।<br>
+                            खेवत धूप अग्नि पर, दीपक ज्योति जले ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                        <p>
+                            मोदक खीर चूरमा, सुवरण थाल भरे ।<br>
+                            सेवक भोग लगावत, सेवा नित्य करे ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                        <p>
+                            झांझ कटोरा और घडियावल, शंख मृदंग घुरे ।<br>
+                            भक्त आरती गावे, जय-जयकार करे ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                        <p>
+                            जो ध्यावे फल पावे, सब दुःख से उबरे ।<br>
+                            सेवक जन निज मुख से, श्री श्याम-श्याम उचरे ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                        <p class="text-center font-semibold text-base pt-4 text-red-700">
+                            जय श्री श्याम हरे, बाबा जी श्री श्याम हरे ।<br>
+                            निज भक्तों के तुमने, पूरण काज करे ॥<br>
+                            ॥ ॐ जय श्री श्याम हरे ॥
+                        </p>
+                    </div>
+                `
+            },
+            'Bhajan': {
+                title: "।। प्रसिद्ध श्याम भजन ।।",
+                icon: `<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13.738A4.992 4.992 0 0012 21c-2.76 0-5-2.24-5-5V7M9 19h6"></path></svg>`,
+                content: `
+                    <p class="text-gray-700 mb-4">यहां बाबा श्याम के कुछ सबसे लोकप्रिय भजनों की सूची दी गई है।</p>
+                    <ul class="space-y-3 bg-green-50 p-4 rounded-xl border border-green-200">
+                        <li class="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm border-l-4 border-green-500">
+                            <span>1. लखदातार तू है मेरा</span>
+                            <button onclick="simulatePlay('लखदातार तू है मेरा')" class="text-xs bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition">सुनें</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm border-l-4 border-green-500">
+                            <span>2. शीश के दानी का दरबार</span>
+                            <button onclick="simulatePlay('शीश के दानी का दरबार')" class="text-xs bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition">सुनें</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm border-l-4 border-green-500">
+                            <span>3. मेरा श्याम आ जाता मेरे सामने</span>
+                            <button onclick="simulatePlay('मेरा श्याम आ जाता मेरे सामने')" class="text-xs bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition">सुनें</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm border-l-4 border-green-500">
+                            <span>4. ये तो श्याम की नौकरी है</span>
+                            <button onclick="simulatePlay('ये तो श्याम की नौकरी है')" class="text-xs bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition">सुनें</button>
+                        </li>
+                    </ul>
+                    <div id="play-message" class="mt-4 text-center p-2 rounded text-sm text-yellow-800 bg-yellow-100 hidden"></div>
+                    <p class="mt-4 text-sm text-gray-500">
+                        (नोट: यह एक वेब प्रोटोटाइप है, इसलिए भजन केवल सिमुलेट किए गए हैं। असली ऐप में आप ऑडियो प्ले कर सकते हैं।)
+                    </p>
+                `
+            },
+            'Katha': {
+                title: "।। श्याम बाबा की कथा (कहानी) ।।",
+                icon: `<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5 5.223 5 3.375 6.42 2.375 8.25c-1.144 2.14 0 5.45 2.14 6.59 1.83 0 3.37-1.42 4.37-3.25 1.14-2.14 0-5.45-2.14-6.59-1.83 0-3.37 1.42-4.37 3.25zm12 0c1.168.776 2.754 1.253 4.5 1.253 2.277 0 4.125-1.42 5.125-3.25 1.144-2.14 0-5.45-2.14-6.59-1.83 0-3.37 1.42-4.37 3.25z"></path></svg>`,
+                content: `
+                    <h2 class="text-2xl font-bold text-center text-indigo-700 mb-4">बर्बरीक से खाटू श्याम तक का सफर</h2>
+                    <div class="bg-purple-50 p-4 rounded-xl shadow-md border-l-4 border-purple-500 text-gray-700 space-y-4">
+                        <p>
+                            पौराणिक कथा के अनुसार, खाटू श्याम जी का मूल नाम **बर्बरीक** था, जो पांडुपुत्र भीम के पोते और घटोत्कच के पुत्र थे। बर्बरीक बचपन से ही अत्यंत वीर और शक्तिशाली थे। उन्हें उनकी माता मोरवी से तीन अभेद्य बाण प्राप्त थे, जिनकी शक्ति से वे एक ही बाण में तीनों लोकों को नष्ट करने की क्षमता रखते थे।
+                        </p>
+                        <p>
+                            महाभारत युद्ध के दौरान, बर्बरीक ने प्रण लिया कि वे **हारने वाले पक्ष** का साथ देंगे। भगवान श्रीकृष्ण यह जानते थे कि यदि बर्बरीक युद्ध में शामिल हुए, तो कोई भी पक्ष नहीं जीतेगा और केवल विनाश होगा।
+                        </p>
+                        <p>
+                            इसलिए, श्रीकृष्ण ने ब्राह्मण का वेश धारण कर बर्बरीक को रास्ते में रोका और उनसे उनका **शीश (सिर)** दान में माँगा। बर्बरीक ने, अपने वचन का पालन करते हुए, सहर्ष अपना शीश दान कर दिया, इसलिए उन्हें **'शीश दानी'** भी कहा जाता है।
+                        </p>
+                        <p class="font-bold text-purple-700">
+                            इस महान बलिदान से प्रसन्न होकर, श्रीकृष्ण ने बर्बरीक को यह वरदान दिया कि कलयुग में वे उनके **'श्याम'** नाम से पूजे जाएँगे और जो भी भक्त हारे हुए या संकटग्रस्त होंगे, वे उनकी शरण में आकर सहारा पाएँगे। इसी कारण श्याम बाबा को **'हारे का सहारा'** भी कहा जाता है।
+                        </p>
+                    </div>
+                `
+            },
+            'Images': {
+                title: "।। श्याम बाबा के दर्शन ।।",
+                icon: `<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L14 14l4.586-4.586a2 2 0 012.828 0L20 16"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>`,
+                content: `
+                    <p class="text-gray-700 mb-4 text-center">खाटू श्याम बाबा के सुंदर विग्रह के दर्शन।</p>
+                    <div class="flex flex-col items-center space-y-4">
+                        <!-- Image Placeholder 1 (Shyam Baba) -->
+                        <img src="https://placehold.co/400x500/6D28D9/FFFFFF?text=Shyam+Baba" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x500/6D28D9/FFFFFF?text=Shyam+Baba';"
+                             alt="Khatu Shyam Ji's idol (Khatu Shyam Ji Ka Vighrah)" 
+                             class="w-full max-w-sm rounded-xl shadow-xl border-4 border-yellow-400 object-cover">
+                        <p class="text-sm text-gray-500">श्याम बाबा का मनमोहक विग्रह</p>
+                        
+                        <!-- Image Placeholder 2 (Khatu Dham Temple) -->
+                        <img src="https://placehold.co/400x300/FACC15/333333?text=Khatu+Mandir" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x300/FACC15/333333?text=Khatu+Mandir';"
+                             alt="Khatu Shyam Temple (Khatu Dham Mandir)" 
+                             class="w-full max-w-sm rounded-xl shadow-xl border-4 border-purple-400 object-cover mt-6">
+                        <p class="text-sm text-gray-500">खाटू धाम मंदिर का दृश्य</p>
+                    </div>
+                    <p class="mt-6 text-sm text-center text-gray-500">
+                        (नोट: वास्तविक ऐप में हाई-रिज़ॉल्यूशन छवियाँ होंगी, यहां हमने प्लेसहोल्डर का उपयोग किया है।)
+                    </p>
+                `
+            }
+        };
+
+        const navTabs = document.getElementById('nav-tabs');
+        const contentArea = document.getElementById('content-area');
+        let currentActiveTab = 'Mantra'; // Default tab
+
+        // Function to render the navigation tabs
+        function renderTabs() {
+            navTabs.innerHTML = ''; // Clear existing tabs
+            Object.keys(contentData).forEach(key => {
+                const data = contentData[key];
+                const button = document.createElement('button');
+                button.className = `flex items-center justify-center p-3 rounded-full text-sm font-medium transition duration-150 ease-in-out whitespace-nowrap shadow-md
+                                    ${key === currentActiveTab ? 'active-tab' : 'inactive-tab'}`;
+                button.innerHTML = data.icon + key;
+                button.setAttribute('data-tab', key);
+                button.onclick = () => switchTab(key);
+                navTabs.appendChild(button);
+            });
+        }
+
+        // Function to switch content view
+        function switchTab(tabName) {
+            currentActiveTab = tabName;
+            const data = contentData[tabName];
+
+            // 1. Update Tabs visual state
+            renderTabs();
+
+            // 2. Update Content Area
+            contentArea.innerHTML = `
+                <div class="pb-8">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-800 mb-6 border-b-2 border-gray-200 pb-2">
+                        ${data.title}
+                    </h2>
+                    <div class="p-2">
+                        ${data.content}
+                    </div>
+                </div>
+            `;
+            contentArea.scrollTo(0, 0); // Scroll to top on tab switch
+        }
+
+        // Function to simulate Bhajan play (since actual audio is not supported here)
+        function simulatePlay(bhajanName) {
+            const messageBox = document.getElementById('play-message');
+            messageBox.textContent = `🎶 '${bhajanName}' भजन चलाने की प्रक्रिया शुरू हो गई है।`;
+            messageBox.classList.remove('hidden');
+            
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 3000); // Hide message after 3 seconds
+        }
+
+        // Initialize the app on load
+        window.onload = function() {
+            // Log to console for Firebase best practice (though no Firestore is used here)
+            // console.log("Initializing Shyam Sewadar Web App.");
+            renderTabs();
+            switchTab(currentActiveTab); // Load default content
+        };
+    </script>
+</body>
+</html>
+
